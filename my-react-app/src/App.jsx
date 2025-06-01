@@ -12,15 +12,14 @@ function App() {
       <div style={styles.app}>
         <TopNavBar />
         <div style={styles.content}>
-          <Home />
-          <Services />
-          <About />
-          <Contact />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="*" element={<Home />} /> {/* Fallback to Home */}
+          </Routes>
         </div>
-        <Routes>
-          <Route path="/" element={null} />
-          <Route path="*" element={null} />
-        </Routes>
       </div>
     </Router>
   );

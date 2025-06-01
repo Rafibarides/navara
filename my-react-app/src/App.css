@@ -1,33 +1,85 @@
-#root {
-  margin: 0;
-  padding: 0;
-}
-
 /* Import Lato font */
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Open+Sans:wght@300;400;600;700&display=swap');
 
-/* Apply Lato font site-wide */
-* {
-  font-family: 'Lato', sans-serif;
+/* Define :root variables from colors.js for easier use in CSS if needed, though primarily for JS styles */
+:root {
+  --color-primary: #333333;
+  --color-secondary: #4A90E2;
+  --color-background: #F0F4F8;
+  --color-text-light: #FFFFFF;
+  --color-text-dark: #2c3e50;
+  --font-primary: 'Open Sans', sans-serif;
+  --font-secondary: 'Lato', sans-serif;
 }
 
 body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  font-family: var(--font-primary);
+  font-size: 16px; /* Base font size */
+  color: var(--color-primary); /* Default text color */
+  background-color: var(--color-background); /* Base background color */
+  /* Subtle gradient background */
+  background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+  /* Or a more neutral one:
+  background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%); */
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh; /* Ensure root takes full viewport height */
+  display: flex;
+  flex-direction: column;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Lato', sans-serif;
+  font-family: var(--font-secondary); /* Lato for headings */
   font-weight: 700;
+  color: var(--color-text-dark); /* Darker text for headings on light backgrounds */
+  margin-bottom: 0.75em;
 }
 
-p, span, a, button, input, textarea, select, option {
-  font-family: 'Lato', sans-serif;
+p {
+  font-family: var(--font-primary); /* Open Sans for paragraphs */
   font-weight: 400;
+  margin-bottom: 1em;
 }
 
-/* Add this to your App.css file */
+a {
+  color: var(--color-secondary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--color-primary); /* Darken on hover, or use a lighter shade of secondary */
+}
+
+button {
+  font-family: var(--font-secondary);
+}
+
+/* Class for glassmorphism effect on cards/containers */
+.glass-card {
+  background: rgba(255, 255, 255, 0.25); /* Default, can be overridden by JS styles with colors.glassBkg */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* For Safari */
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.18); /* Default, can be overridden by JS styles with colors.glassBorder */
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15); /* Softer shadow */
+  padding: 20px;
+}
+
+/* Utility class for centering content if needed */
+.text-center {
+  text-align: center;
+}
+
+/* Specific Navara logo style if still used */
 .logo-multiply {
   mix-blend-mode: multiply !important;
   -webkit-mix-blend-mode: multiply !important; /* For Safari */
